@@ -1,3 +1,5 @@
+require 'set'
+
 class GraphNode
 
   attr_accessor :value, :neighbors
@@ -7,24 +9,26 @@ class GraphNode
     @neighbors = []
   end
 
-  def bfs(starting_node, target_value)
-
-    return starting_node if starting_node.value == target_value
-
-    queue = [starting_node]
-
-    unless queue.empty?
-
-      node = queue.shift
-
-      return node if node.value == target_value
-
-      node.each { |neighbor| queue.push(neighbor) }
-
-    end
-
+  def add_neighbor(neighbor)
+    neighbors << neighbor
   end
 
+end
+
+def bfs(starting_node, target_value)
+
+  visited = Set.new()
+  queue = [starting_node]
+
+  until queue.empty?
+    node = queue.shift
+    unless visited.include?(node)
+      return node.value if node.value == target_value
+      visited.add(node)
+      queue.push(*node.neighbors)
+    end
+  end
+  nil
 end
 
 
@@ -39,4 +43,5 @@ if __FILE__ == $PROGRAM_NAME
   c.neighbors = [b, d]
   e.neighbors = [a]
   f.neighbors = [e]
+  p bfs(a, 'b')
 end
