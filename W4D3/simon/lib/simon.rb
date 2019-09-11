@@ -13,9 +13,14 @@ class Simon
 
   def play; end
 
-  def take_turn; end
+  def take_turn
+    show_sequence
+    require_sequence
+  end
 
-  def show_sequence; end
+  def show_sequence
+    add_random_color
+  end
 
   def require_sequence; end
 
@@ -28,5 +33,9 @@ class Simon
 
   def game_over_message; end
 
-  def reset_game; end
+  def reset_game
+    @sequence_length = 1
+    @game_over = false
+    @seq = []
+  end
 end

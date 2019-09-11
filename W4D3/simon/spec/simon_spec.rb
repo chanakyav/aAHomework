@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'simon'
 
 describe Simon do
@@ -25,7 +27,7 @@ describe Simon do
     end
 
     it 'adds a color included in the options' do
-      expect(%w(red blue yellow green)).to include(simon.seq.last)
+      expect(%w[red blue yellow green]).to include(simon.seq.last)
     end
 
     it 'adds a random color' do
@@ -73,8 +75,8 @@ describe Simon do
     end
 
     it 'calls #take_turn until the game is over' do
-      expect(simon).to receive(:take_turn) {  }
-      expect(simon).to receive(:take_turn) {  }
+      expect(simon).to receive(:take_turn) {}
+      expect(simon).to receive(:take_turn) {}
       expect(simon).to receive(:take_turn) { simon.game_over = true }
 
       simon.play
@@ -98,7 +100,7 @@ describe Simon do
   describe '#reset_game' do
     before(:each) do
       simon.sequence_length = 4
-      simon.seq = ["blue", "red", "green"]
+      simon.seq = %w[blue red green]
       simon.game_over = true
       simon.reset_game
     end
