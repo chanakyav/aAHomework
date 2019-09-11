@@ -19,7 +19,10 @@ class Simon
 
   def require_sequence; end
 
-  def add_random_color; end
+  def add_random_color
+    index = rand(0...COLORS.length)
+    seq << COLORS[index]
+  end
 
   def round_success_message; end
 
