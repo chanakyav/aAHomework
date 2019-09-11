@@ -1,41 +1,29 @@
+# frozen_string_literal: true
+
 class Simon
-  COLORS = %w(red blue green yellow)
+  COLORS = %w[red blue green yellow].freeze
 
   attr_accessor :sequence_length, :game_over, :seq
 
   def initialize
-
+    @sequence_length = 1
+    @game_over = false
+    @seq = []
   end
 
-  def play
+  def play; end
 
-  end
+  def take_turn; end
 
-  def take_turn
+  def show_sequence; end
 
-  end
+  def require_sequence; end
 
-  def show_sequence
+  def add_random_color; end
 
-  end
+  def round_success_message; end
 
-  def require_sequence
+  def game_over_message; end
 
-  end
-
-  def add_random_color
-
-  end
-
-  def round_success_message
-
-  end
-
-  def game_over_message
-
-  end
-
-  def reset_game
-
-  end
+  def reset_game; end
 end
