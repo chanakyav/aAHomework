@@ -11,11 +11,21 @@ class Simon
     @seq = []
   end
 
-  def play; end
+  def play
+    take_turn until game_over
+    if game_over
+      game_over_message
+      reset_game
+    end
+  end
 
   def take_turn
     show_sequence
     require_sequence
+    unless game_over
+      round_success_message unless game_over
+      @sequence_length += 1
+    end
   end
 
   def show_sequence
